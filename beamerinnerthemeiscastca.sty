@@ -1,0 +1,143 @@
+% Specify how elements are typeset inside the frame
+%% \ProvidesPackage{beamercolorthemeiscastca}
+
+
+% --- Title Page ---
+\makeatletter
+\setbeamertemplate{title page}
+{
+    
+    \begin{tikzpicture}[remember picture,overlay]
+      \node[anchor=north,inner sep=0,outer sep=0] at (current page.north) {\includegraphics[width=\paperwidth,height=2cm]{Theme/Logos/headline.jpg}};
+    \end{tikzpicture}
+    
+   \vbox{}
+   \vfill
+   \begin{centering}
+       \vskip0.25em%
+     \begin{beamercolorbox}[sep=8pt,center]{title}
+       \usebeamerfont{title}\inserttitle\par%
+       \ifx\insertsubtitle\@empty%
+       \else%
+         \vskip0.25em%
+         {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+       \fi%     
+     \end{beamercolorbox}%
+    \vskip2.25em%
+     {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
+     \vskip1em\par
+     \begin{beamercolorbox}[sep=8pt,center]{author}
+       \usebeamerfont{author}\insertauthor
+     \end{beamercolorbox}
+      \vspace{10pt}
+     % \begin{beamercolorbox}[sep=8pt,center]{institute}
+     %   \usebeamerfont{institute}\insertinstitute
+     % \end{beamercolorbox}
+     \begin{beamercolorbox}[sep=8pt,center]{date}
+       \usebeamerfont{date}\insertdate
+     \end{beamercolorbox}\vskip0.5em
+   \end{centering}
+   \vfill
+   
+   \begin{tikzpicture}[remember picture,overlay]
+    \node [anchor=north,inner sep=0,outer sep=0] (tcalogo) at (1\textwidth,0.44) {\includegraphics[width=.16\textwidth]{Theme/Logos/tcalogo.png}};
+
+    \node [anchor=north,inner sep=0,outer sep=0] (tcaname) at (0.44\textwidth,0.2) {
+        \begin{beamercolorbox}[sep=8pt,right]{institute}
+            \usebeamerfont{institute}{可信计算与信息保障实验室\\Trusted Computing and \\Information Assurance Laboratory}
+        \end{beamercolorbox}
+    };
+
+    \node [anchor=south,inner sep=0,outer sep=0] (iscaslogo) at (0.03\paperwidth,-0.5) {\includegraphics[width=.2\textwidth]{Theme/Logos/iscaslogo.jpg}};
+
+    \node [anchor=south,inner sep=0,outer sep=0] (iscasname) at (0.03\paperwidth,-1) {
+        \begin{beamercolorbox}[sep=8pt,center]{institute}
+            \usebeamerfont{institute}\insertinstitute
+        \end{beamercolorbox}
+    };
+
+\end{tikzpicture}
+}
+\makeatother
+
+\makeatletter
+    \newenvironment{withoutheadline}{
+        \setbeamertemplate{footline}[default]
+        \def\beamer@entrycode{\vspace*{-\headheight}}
+    }{}
+\makeatother
+
+
+% --- Footer ---
+%Remove Navigation Bars
+\setbeamertemplate{footline}[frame number]{}
+% And Symbols
+\setbeamertemplate{navigation symbols}{}
+% Design
+\setbeamertemplate{footline}{
+\begin{tikzpicture}[remember picture,overlay]
+    % \coordinate (West) at (0,0.5);
+    % \coordinate (East) at (\textwidth,0.5);
+    % \draw[fill=ucasblue, draw=ucasblue] (0,0) rectangle  (\textwidth,1);
+    
+    % \begin{beamercolorbox}[wd=0.2\paperwidth,ht=2.75ex,dp=1.375ex]{frametitle}
+    %     \hspace*{2ex} \insertframetitle\hfill {\small\insertframenumber} \hspace*{1ex}
+    % \end{beamercolorbox}
+
+    % \node [inner sep=0pt,clip,rounded corners=0.1cm] (tsinghualogo) at (0.1\textwidth,0.5) {\includegraphics[width=.2\textwidth]{Theme/Logos/W020160923674377419690.jpg}};
+
+    \node [inner sep=0pt,clip] (pagenum) at (0.9\textwidth,0.5) {\small\insertframenumber\,/\,\insertmainframenumber};
+
+\end{tikzpicture}}
+
+% --- Header ---
+\setbeamertemplate{frametitle}{
+
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.75ex,dp=1.375ex]{frametitle}
+        \hspace*{2ex}\insertframetitle \hfill
+    \hspace*{1ex}
+    \end{beamercolorbox}
+    \par
+    
+    \begin{tikzpicture}[remember picture,overlay]
+    
+    % \coordinate (LeftEnd) at (-1, 0.5);
+    % \coordinate (LeftEndUnder) at (-1, 0.1);
+    % \coordinate (RightEnd) at (3,0.5);
+    % \draw[ucasblue, thick, fill=ucasblue] (LeftEnd)--(RightEnd)--(LeftEndUnder) -- (LeftEnd);
+
+    \coordinate (RightEnd) at (0.4\paperwidth, 0.1);
+    \coordinate (PreRightEnd) at (0, 0.1);
+    \draw[ucasblue,thick] (RightEnd) -- (PreRightEnd);
+
+    \node [inner sep=0pt,clip,rounded corners=0.1cm] (tcalogo) at (0.8\paperwidth,0.5) {\includegraphics[width=.16\textwidth]{Theme/Logos/tcalogo.png}};
+    
+    \end{tikzpicture}
+
+    
+}
+
+\setbeamertemplate{endpage}{%
+    \appendix
+    \begin{withoutheadline}
+        \begin{frame}{The End}
+        \begin{center}
+            \huge
+            Thanks!
+        \end{center}
+    \end{frame} 
+    \end{withoutheadline}
+    
+}
+
+% \setbeamertemplate{background}{
+% \begin{tikzpicture}[remember picture,overlay]
+%   \node[anchor=north,inner sep=0,outer sep=0] at (current page.north) {\includegraphics[width=\paperwidth,height=2cm]{Theme/Logos/image2.jpeg}};
+% \end{tikzpicture}
+% }
+
+% --- Table of Content ---
+% Might modify later (next version)
+
+% --- Sidebar of Content ---
+% Might add later (next version)
